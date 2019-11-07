@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: galaxy-tool-util
+Version: 19.9.0.dev5
+Summary: Galaxy Tool and Tool Dependency Utilities
+Home-page: https://github.com/galaxyproject/galaxy
+Author: Galaxy Project and Community
+Author-email: galaxy-committers@lists.galaxyproject.org
+License: AFL
+Keywords: galaxy
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: Academic Free License (AFL)
+Classifier: Operating System :: POSIX
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Software Development :: Testing
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: galaxy-util
+
+.. image:: https://badge.fury.io/py/galaxy-tool-util.svg
+   :target: https://pypi.org/project/galaxy-tool-util/
+
+
+Overview
+--------
+
+The Galaxy_ tool utilities.
+
+* Free software: Academic Free License version 3.0
+* Code: https://github.com/galaxyproject/galaxy
+
+.. _Galaxy: http://galaxyproject.org/
+
+
+
+
+History
+-------
+
+.. to_doc
+
+---------------------
+19.9.0.dev0
+---------------------
+
+* Initial import from dev branch of Galaxy during 19.09 development cycle.
+
+

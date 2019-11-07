@@ -1,0 +1,47 @@
+<tool id="de-test" name="Metabolomics 2-way differential abundance" version="0.1.0">
+    <requirements>
+        <requirement type="package">metab-de.R</requirement>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript --vanilla /Users/don/Documents/galaxy/planemo-de/metab-de.R '$input1' '$pval' '$qval' '$treatment_name' '$control_name' '$output1'
+    ]]></command>
+    <inputs>
+        <param type="data" name="Input tabular data" format="tabular" />
+        <section name="de-params" title="Differential Abundance parameters" expanded="true">
+            <param name="pval" type="float" value="0.01" label="p-value for t-tests" min="0" max="1" help="p-value used for t-tests" />
+            <param name="qval" type="float" value="0.05" label="q-value for FDR" min="0" max="1" help="q-value for false discovery rate, using the Benjamini-Hochberg procedure" />
+            <param name="treatment_name" type="text" value="" label="Name of treatment group. This will be the numerator for fold change calculations."/>
+            <param name="control_name" type="text" value="" label="Name of control group. This will be the denominator for fold change calculations."/>
+        </section>
+    </inputs>
+    <outputs>
+        <data name="output1" format="csv" />
+    </outputs>
+    <help><![CDATA[
+    	Do differential abundance analysis for each metabolite in the input data. 
+        1. Does normalization and other processing to get the data ready for statistical analysis
+        2. From (1) do differential abundance analysis, using multiple t-tests, one for each metabolite.  We control for false discovery rate using the Benjamini-Hochberg procedure. 
+
+        Input is a `tsv` file of raw abundance counts, before any kind of normalization. 
+        * Sample names are the first column
+        * Group names are the second column
+        * The rest of the columns are metabolites/compounds.
+        * The input data may contain more than 2 groups, but a single run of this module will only compare a "treatment group" of your choosing against a "control group" of your choosing. These are specified in the input text fields (watch out for spelling errors!). See tool <TOOL_NAME_HERE> for >2-way comparison. 
+
+        Procedure:
+        1. Duplicate column names are preserved; one of the duplicates will have a "_1" appended to it. 
+        2. Zero or blank values will be replaced with half of the smallest nonzero value in the input table.
+        3. Log2 transform the data, then perform row(sample)-wise median normalization.
+        4. Do a t-test for each metabolite to test for differential abundance.
+        5. Control FDR with Benjamini-Hochberg.
+
+        Usage: Rscript --vanilla metab-de.R <input_filename> <p_value> <q_value> <treatment_group_name> <control_group_name> <output_filename>
+
+        Options: input_filename       absolute path to input file. 
+                 p_value              p-value threshold for t-tests.
+                 q_value              q-value threshold for multiple hypothesis testing correction (Benjamini-Hochberg).
+                 treatment_group_name name of treatment group; fold change numerator
+                 control_group_name   name of control group; fold change denominator
+                 output_filename      absolute path to output file.
+    ]]></help>
+</tool>

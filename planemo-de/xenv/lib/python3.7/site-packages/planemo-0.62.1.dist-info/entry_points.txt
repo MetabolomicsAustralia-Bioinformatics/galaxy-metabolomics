@@ -1,0 +1,3 @@
+
+    [console_scripts]
+    planemo=planemo.cli:planemo
