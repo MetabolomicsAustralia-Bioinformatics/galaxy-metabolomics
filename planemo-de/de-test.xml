@@ -14,9 +14,23 @@
             <param name="control_name" type="text" value="" label="Name of control group. This will be the denominator for fold change calculations."/>
         </section>
     </inputs>
+
     <outputs>
         <data name="output1" format="csv" />
     </outputs>
+
+    <tests>
+        <test>
+            <param name="input" value="/Users/don/Documents/galaxy/planemo-de/fake_data.csv" />
+            <param name="pval" value="0.01" />
+            <param name="qval" value="0.05" />
+            <param name="treatment_name" value="treatment" />
+            <param name="control_name" value="control" />
+
+            <output name="test_output" file="fake_data_output.csv" ftype="csv" lines_diff="2" />
+        </test>
+    </tests>
+
     <help><![CDATA[
     	Do differential abundance analysis for each metabolite in the input data. 
 
