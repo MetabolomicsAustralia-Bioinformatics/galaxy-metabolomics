@@ -44,13 +44,13 @@
 
             Rscript --vanilla metab-de.R <input_filename> <p_value> <q_value> <treatment_group_name> <control_group_name> <output_filename>
 
-        Inputs:
+        Inputs::
 
-        -input_filename       absolute path to input file. 
-        -p_value              p-value threshold for t-tests.
-        -q_value              q-value threshold for multiple hypothesis testing correction (Benjamini-Hochberg).
-        -treatment_group_name name of treatment group; fold change numerator
-        -control_group_name   name of control group; fold change denominator
-        -output_filename      absolute path to output file.
+         -input_filename       absolute path to input file. 
+         -p_value              p-value threshold for t-tests.
+         -q_value              q-value threshold for multiple hypothesis testing correction (Benjamini-Hochberg).
+         -treatment_group_name name of treatment group; fold change numerator
+         -control_group_name   name of control group; fold change denominator
+         -output_filename      absolute path to output file.
     ]]></help>
 </tool>
